@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.37"
+    "@vitejs/plugin-vue-jsx": "^2.0.1",
+    "sass": "^1.55.0",
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.1.0",
