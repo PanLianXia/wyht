@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { RouteRecordRaw, createRouter, createWebHashHistory } from 'vue-router' 
 import App from './App'
 
-const modules = import.meta.glob('./components/**/*.tsx')
+const modules = import.meta.glob('./stories/**/*.tsx')
 async function run() {
     const routes: RouteRecordRaw[] = []
     for (let path in modules) {
