@@ -16,60 +16,58 @@ export const TabsExample01 = () => {
       }
     return <div>
         <h2>Tabs示例</h2>
-        <Page>
-            <Tabs scrollBehavior='inner'>
-                <Tab
-                    renderMenu={ ({isActive}) => {
-                        return <MenuItem isActive={isActive} type="home" title="首页" />
-                    }}
-                >
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                    <h2>你好！首页</h2>
-                </Tab>
-                <Tab
-                    renderMenu={ ({isActive}) => {
-                        return <MenuItem isActive={isActive} type="discovery" title="发现" />
-                    }}
-                >
-                    <h2>你好！发现</h2>
-                </Tab>
-            </Tabs>
-        </Page>
+        <Tabs scrollBehavior='body'>
+            <Tab
+                renderMenu={ ({isActive}) => {
+                    return <MenuItem isActive={isActive} type="home" title="首页" />
+                }}
+            >
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+                <h2>你好！首页</h2>
+            </Tab>
+            <Tab
+                renderMenu={ ({isActive}) => {
+                    return <MenuItem isActive={isActive} type="discovery" title="发现" />
+                }}
+            >
+                <h2>你好！发现</h2>
+            </Tab>
+        </Tabs>
     </div>
 }
