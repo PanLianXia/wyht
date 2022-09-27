@@ -11,14 +11,6 @@ cd $(dirname $0)
 # 由于上边已经cd到了wyht目录，所以结果是/d/wangyi/projects/wyht
 BASE=$(pwd)
 
-projects=(huatian-app huatian-components huatian-utils huatian-rest huatian-service huatian-domain)
-
-for project in ${projects[@]}
-do
-  echo "install $project"
-  cd $BASE/packages/$project
-  cnpm install
-done
 
 # 开发中，两个项目或多个项目之间相互依赖时，用 yarn link连接，
 # 例如：我们现在有项目B，B中利用npm / yarn 包管理器 引入了 包 A，A是我们自己开发封装的组件，
