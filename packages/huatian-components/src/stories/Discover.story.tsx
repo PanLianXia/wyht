@@ -1,10 +1,14 @@
 import { defineComponent, reactive, ref } from "vue";
-import { CardStack, DiscoverCard } from "../components/discover/CardStack";
+import { CardStack, SocialCardProps } from "../components/discover/CardStack";
+import { DiscoveryCard, DiscoveryCardProps } from "../components/discover/Discoverycard";
 import { wait } from '@huatian/utils'
 import Mock, { Random } from 'mockjs';
+import a1 from '../assets/a1.jpg'
+import a2 from '../assets/a2.png'
+import { ListView } from "../components/listview/ListView";
 
 async function mockData() {
-    await wait(1000+Math.random()*1000)
+    await wait(1000+Math.floor(Math.random()*1000))
     return [...Array(10)].map((_, i) => {
         return {
             id: i,
@@ -19,8 +23,21 @@ async function mockData() {
     // })
     // return mockData.list
 }
+
+async function mockDataDiscoverList() {
+    await wait(1000+Math.floor(Math.random()*1000))
+    return [...Array(10)].map((_, i) => {
+        return {
+            title: Random.ctitle(),
+            content: Random.csentence(),
+            cover: Random.image('100x100'),
+            avatar: [a1, a2][Math.floor(Math.random() * 2)]
+        }
+    })
+}
+
 function useCandidates() {
-    const data = ref<DiscoverCard[]>([])
+    const data = ref<SocialCardProps[]>([])
     const ver = ref(0)
     mockData().then(list => {
         data.value = data.value.concat(list)
@@ -36,7 +53,23 @@ function useCandidates() {
     };
 }
 
-export const DiscoverExample = defineComponent({
+function useDiscoveryList() {
+    const data = ref<DiscoveryCardProps[] | null>(null)
+
+    async function load() {
+        const list = await mockDataDiscoverList()
+        if(data.value === null) {
+            data.value = []
+        }
+        data.value = data.value.concat(list)
+    }
+
+    load()
+    
+    return { list: data, loadMore: load }
+}
+
+export const SocialExample = defineComponent({
     setup() {
        
         const { list, removeById, ver } = useCandidates()
@@ -49,4 +82,16 @@ export const DiscoverExample = defineComponent({
             </div>
         }
     },
+})
+
+export const DiscoverListExample = defineComponent({
+    setup() {
+        const { list, loadMore } = useDiscoveryList()
+        return () => {
+            return <ListView onBottom={loadMore}>
+                {list.value === null && <div>Loading</div>}
+                {list.value &&  list.value.map((item, i) => <DiscoveryCard key={i} {...item}></DiscoveryCard>)}
+            </ListView>
+        }
+    }
 })

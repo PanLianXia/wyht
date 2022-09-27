@@ -17,7 +17,7 @@ export const Flex = defineComponent({
             type: Number,
         },
         justify: {
-            type: String as PropType<'flex-start' | 'center' | 'flex-end' | 'space-beteen'>
+            type: String as PropType<'flex-start' | 'center' | 'flex-end' | 'space-between'>
         }
     },
     setup(props, ctx) {

@@ -1,26 +1,26 @@
 import { computed, defineComponent, PropType, reactive, ref, StyleValue, watch } from "vue";
 import classes from './CardStack.module.scss'
 
-export type DiscoverCard = {
+export type SocialCardProps = {
     id: number,
     img: string
 }
 export const CardStack = defineComponent({
     props: {
         list: {
-            type: Array as PropType<DiscoverCard[]>,
+            type: Array as PropType<SocialCardProps[]>,
             required: true
         },
         onConfirm: {
-            type: Function as PropType<(card: DiscoverCard) => void>
+            type: Function as PropType<(card: SocialCardProps) => void>
         }
     },
     setup({onConfirm}) {
-        function confirm(card: DiscoverCard) {
+        function confirm(card: SocialCardProps) {
             onConfirm && onConfirm(card)
         }
         return ({list}: {
-            list: DiscoverCard[]
+            list: SocialCardProps[]
         }) => {
             console.log('render card stack')
             return <div class={classes['card-stack']}>
@@ -73,7 +73,7 @@ function useTouchEvents(enable: boolean = true) {
 const Card = defineComponent({
     props: {
         card: {
-            type: Object as PropType<DiscoverCard>,
+            type: Object as PropType<SocialCardProps>,
             required: true
         },
         index: {
@@ -81,7 +81,7 @@ const Card = defineComponent({
             required: true
         },
         onConfirm: {
-            type: Function as PropType<(card: DiscoverCard) => void>
+            type: Function as PropType<(card: SocialCardProps) => void>
         }
     },
     setup({card, index, onConfirm}) {
