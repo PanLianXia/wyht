@@ -1,0 +1,17 @@
+.avatar {
+    &.small {
+        width : 36px;
+        height : 36px;
+        border-radius: 18px;
+    }
+
+    &.medium {
+        width: 48px;
+        height: 48px;
+        border-radius: 24px;
+    }
+
+    &.large {
+
+    }
+}

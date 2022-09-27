@@ -36,25 +36,6 @@
       background-color: red;
       color : white;
     }
-
-    .avatar {
-        border: 2px solid #eee;
-        &.small {
-            width : 56px;
-            height : 56px;
-            border-radius: 28px;
-        }
-
-        &.medium {
-            width : 96px;
-            height : 96px;
-            border-radius: 48px;
-        }
-
-        &.large {
-
-        }
-    }
   }
   
   
@@ -63,22 +44,22 @@
     margin-bottom: 20px;
     &.receive {
       .content {
-        margin-left : 20px;
-        font-size: 32px;
+        margin-left : 10px;
+        font-size: 18px;
       }
     }
     &.send {
       justify-content: flex-end;
       .content {
-        margin-right : 20px;
-        font-size: 32px;
+        margin-right : 10px;
+        font-size: 18px;
       }
     }
     .content {
       border : 2px solid #eee;
       border-radius: 2px;
-      padding-left: 5px;
-      line-height: 64px;
+      padding: 0 5px;
+      line-height: 34px;
     }
   }
   

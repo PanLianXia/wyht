@@ -22,15 +22,15 @@ export default defineComponent({
     }
 })
 
-function useToogle(): [Ref<boolean>, () => void] {
-    const value = ref(sessionStorage['toogle-value'] !== 'false')
+function useToggle(): [Ref<boolean>, () => void] {
+    const value = ref(sessionStorage['toggle-value'] !== 'false')
 
-    function toogle() {
+    function toggle() {
         value.value = !value.value
-        sessionStorage['toogle-value'] = value.value
+        sessionStorage['toggle-value'] = value.value
     }
 
-    return [value, toogle]
+    return [value, toggle]
 }
 const Menu = defineComponent({
     props: {
@@ -40,18 +40,25 @@ const Menu = defineComponent({
         }
     },
     setup(props) {
-        const [toogleValue, toogle] = useToogle()
+        const [toggleValue, toggle] = useToggle()
+        window.addEventListener("keyup", e => {
+            if(e.ctrlKey) {
+              if(e.key === '/') {
+                toggle()
+              }
+            }
+          })
         return () => {
             return (
-                <div class={classes.menu} style={{display: toogleValue.value ? 'block' : 'none'}}>
+                <div class={classes.menu} style={{display: toggleValue.value ? 'block' : 'none'}}>
                     <ul>
                         {
                             props.routes.map(route => 
-                                { return <li key={route.name} onClick={() => toogle()}><RouterLink to={route.path}>{route.name}</RouterLink></li>
+                                { return <li key={route.name} onClick={() => toggle()}><RouterLink to={route.path}>{route.name}</RouterLink></li>
                             })
                         }
                     </ul>
-                    <button class={classes.toggle} onClick={() => {toogle()}}>收起</button>
+                    <button class={classes.toggle} onClick={() => {toggle()}}>收起</button>
                 </div>
             )
         }

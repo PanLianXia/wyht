@@ -21,7 +21,7 @@ export const MessageExample = defineComponent({
         }]
         return () => <ListView>
             {
-                list.map(messageItem => <MessageCard {...messageItem}></MessageCard>)
+                list.map((messageItem, i) => <MessageCard key={i} {...messageItem}></MessageCard>)
             }
             
         </ListView>

@@ -1,5 +1,6 @@
 import { defineComponent, StyleValue } from 'vue';
 import { Flex } from '../layout/Flex';
+import { Avatar } from '../widgets/Avatar';
 import classes from './card.module.scss'
 
 export const MessageCard = defineComponent({
@@ -28,7 +29,7 @@ export const MessageCard = defineComponent({
         return () => {
             return <Flex class={classes['user-message']}>
                 {/* 头像 */}
-                <Avatar url={props.avatar} size='small' style={{marginRight: '20px'}}/>
+                <Avatar url={props.avatar} style={{marginRight: '20px'}}/>
                 <Flex type='column' class={classes['middle-box']}>
                     {/* 发消息的名字 */}
                     <div class={classes.username}>{props.name}</div>
@@ -53,6 +54,6 @@ const Unread = ({ unread } : { unread?: number }) => {
     return <div class={classes.unread}>{unread}</div>
 }
 
-const Avatar = ({ url, style, size='medium' } : { url: string, style: StyleValue, size?: "small" | "medium" | "larget"}) => {
-    return <img class={`${classes.avatar} ${classes[size]}`} style={style} src={url} alt='' />
-}
+// const Avatar = ({ url, style, size='medium' } : { url: string, style: StyleValue, size?: "small" | "medium" | "larget"}) => {
+//     return <img class={`${classes.avatar} ${classes[size]}`} style={style} src={url} alt='' />
+// }
