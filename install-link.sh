@@ -29,6 +29,7 @@ yarn link
 cd $BASE/packages/huatian-components
 yarn link
 yarn link @huatian/utils
+yarn link @huatian/domain
 
 cd $BASE/packages/huatian-app
 yarn link @huatian/components

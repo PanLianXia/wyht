@@ -10,6 +10,14 @@ export const ListView = defineComponent({
     setup({onBottom}, ctx) {
         const bottomRef = ref<HTMLDivElement | null>(null)
         const loading = ref<Boolean>(false)
+
+        // 把函数expose出去
+        ctx.expose({
+            scrollToBottom: () => {
+                window.scrollTo(0, Number.MAX_SAFE_INTEGER)
+            }
+        })
+
         watch(bottomRef, () => {
             if(!bottomRef.value) return
 

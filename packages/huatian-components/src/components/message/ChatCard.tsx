@@ -3,7 +3,7 @@ import { Flex } from '../layout/Flex';
 import { Avatar } from '../widgets/Avatar';
 import classes from './card.module.scss'
 
-export type ChatCardType = {
+export type ChatCardProps = {
     type: 'receive' | 'send',
     avatar: string,
     content: string
