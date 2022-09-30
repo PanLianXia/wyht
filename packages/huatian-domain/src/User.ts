@@ -1,5 +1,4 @@
 import { ChatSession } from "./ChatSession"
-import { Random } from 'mockjs'
 
 export class User {
     constructor(
@@ -27,13 +26,6 @@ export class User {
 }
 
 export class UserRepo {
-    private static repo: UserRepo
-    public static getRepo() {
-        if(!UserRepo.repo) {
-            UserRepo.repo = new UserRepo
-        }
-        return UserRepo.repo
-    }
     private users: Map<number, User>
 
     constructor() {
@@ -50,16 +42,5 @@ export class UserRepo {
 
     public getAll() {
         return this.users.values()
-    }
-    /**
-     * 随机生成用户
-     * @param imageList 头像列表
-     * @param N 需要生成的用户数量
-     */
-     static generate(imageList: string[], N: number) {
-        for(let i = 1; i < N; i++) {
-            const user = new User(i, Random.cname(), imageList[Math.floor(Math.random() * imageList.length)])
-            UserRepo.getRepo().add(user)
-        }
     }
 }
