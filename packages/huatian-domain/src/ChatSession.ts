@@ -1,4 +1,6 @@
 import { Emiter } from '@huatian/utils' 
+import { User } from './User'
+
 // 领域模型
 type ChatRecord = {
     type: 'send' | 'receive',
@@ -41,19 +43,3 @@ export class ChatSession extends Emiter<ChatSessionTopics> {
     }
 }
 
-export class User {
-    constructor(
-        private id: number,
-        private uname: string,
-        private avatar: string
-    ) {}
-
-    createChatSession(to: User) {
-        const session = new ChatSession(this, to)
-        return session
-    }
-
-    getAvatar() {
-        return this.avatar
-    }
-}
