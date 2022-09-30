@@ -36,7 +36,6 @@ const _Tabs = defineComponent({
                 }
                 vNode.props.activeIndex = activeIndex.value;
                 vNode.props.index = i;
-                console.log({vNode})
                 return vNode
             })
             return (
