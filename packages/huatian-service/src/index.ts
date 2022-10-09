@@ -7,6 +7,7 @@ import { Repository, User } from '@huatian/domain'
 const app = express()
 
 app.use(cors())
+app.use(express.json())
 
 type FN = (req?: Request) => any
 function expressRouterTransfer(fn: FN) {
@@ -43,9 +44,16 @@ function token(req: Request & {user: User}, res: Response, next: NextFunction) {
 app.get('/discovery', expressRouterTransfer(routes.discovery.get))
 
 app.put('/friend/:uid', token, expressRouterTransfer(routes.friend.put))
-app.get('/friend/:uid', expressRouterTransfer(routes.friend.get))
+app.get('/friend/:uid', expressRouterTransfer(routes.friend.getForAdmin))
+app.get('/friend', token, expressRouterTransfer(routes.friend.get))
 
 app.get('/candidates', token, expressRouterTransfer(routes.candidates.get))
+
+app.get('/user', token, expressRouterTransfer(routes.user.get))
+
+app.post('/message', token, expressRouterTransfer(routes.message.post))
+
+app.get('/message', token, expressRouterTransfer(routes.message.get))
 
 app.use('/assets',express.static(path.resolve(__dirname, './assets')))
 

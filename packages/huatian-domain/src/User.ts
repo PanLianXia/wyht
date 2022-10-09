@@ -1,5 +1,6 @@
 import { Random } from "mockjs"
-import { ChatSession } from "./ChatSession"
+import { ChatSession, ChatSessionRepo } from "./ChatSession"
+import { UserJson } from "./domain.types"
 import { Repository } from "./Repository"
 
 export class User {
@@ -8,11 +9,6 @@ export class User {
         private uname: string,
         private avatar: string
       ) {}
-
-    createChatSession(to: User) {
-        const session = new ChatSession(this, to)
-        return session
-    }
 
     getAvatar() {
         return this.avatar
@@ -30,12 +26,17 @@ export class User {
         Repository.relationShipRepo().addRelation(this, user)
     }
 
-    public toJSON() {
+    public toJSON(): UserJson {
         return {
             id: this.id,
             uname: this.uname,
             avatar: this.avatar
         }
+    }
+
+    public static fromJson(json: UserJson) {
+        const user = new User(json.id, json.uname, json.avatar)
+        return user
     }
 }
 

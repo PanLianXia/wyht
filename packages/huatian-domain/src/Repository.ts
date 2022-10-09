@@ -1,11 +1,13 @@
 import { DiscoveryRepo } from "./Discovery"
 import { UserRepo } from "./User"
 import { RelationRepo } from './RelationShip'
+import { ChatSessionRepo } from "./ChatSession"
 
 export class Repository {
     private static _userRepo: UserRepo
     private static _discoveryRepo: DiscoveryRepo
     private static _relationShipRepo: RelationRepo
+    private static _chatSessionRepo: ChatSessionRepo
 
     public static userRepo () {
         if(!Repository._userRepo) {
@@ -26,5 +28,13 @@ export class Repository {
             Repository._relationShipRepo = new RelationRepo()
         }
         return Repository._relationShipRepo
+    }
+
+    public static chatSessionRepo () {
+        debugger
+        if(!Repository._chatSessionRepo) {
+            Repository._chatSessionRepo = new ChatSessionRepo()
+        }
+        return Repository._chatSessionRepo
     }
 }

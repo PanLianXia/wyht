@@ -1,9 +1,5 @@
-import { Repository, User } from "@huatian/domain"
-import { Request } from "express"
-
-type AuthorizedRequest = Request & {
-    user: User
-}
+import { Repository } from "@huatian/domain"
+import { AuthorizedRequest } from "./route.type"
 
 export const get = (req: AuthorizedRequest) => {
     const relationRepo = Repository.relationShipRepo()

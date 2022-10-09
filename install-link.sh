@@ -25,6 +25,7 @@ yarn link @huatian/utils
 
 cd $BASE/packages/huatian-rest
 yarn link
+yarn link @huatian/domain
 
 cd $BASE/packages/huatian-components
 yarn link

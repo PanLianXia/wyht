@@ -17,8 +17,15 @@ async function run() {
                 })
                 continue
             }
+
+            let routePath = '/' + key.toLowerCase()
+            if(mod[key].route) {
+                routePath = mod[key].route.path
+            }
+
+
             routes.push({
-                path: `/${key.toLowerCase()}`,
+                path: routePath,
                 name: key,
                 component: mod[key]
             })

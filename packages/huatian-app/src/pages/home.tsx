@@ -1,5 +1,6 @@
 import { Tabs } from "@huatian/components";
 import { Discovery } from "../components/Discovery";
+import { Friends } from "../components/Friends";
 import { Match } from "../components/Match";
 
 const { Tab } = Tabs
@@ -36,7 +37,7 @@ export const Home = () => {
                     return <MenuItem isActive={isActive} type="discovery" title="消息" />
                 }}
             >
-                <h2>你好！消息</h2>
+                <Friends />
             </Tab>
         </Tabs>
     </div>

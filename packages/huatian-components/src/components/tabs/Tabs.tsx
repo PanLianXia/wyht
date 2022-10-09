@@ -94,6 +94,8 @@ const Tab = defineComponent({
         return () => {
             const defaultSlot = ctx.slots.default!
             const show = props.activeIndex === props.index
+            if(!show) return null
+            
             return <div class={classes.tab} style={{display: show ? 'block' : 'none', ...props.style}}>
                 {defaultSlot()}
             </div>
