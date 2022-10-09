@@ -12,12 +12,12 @@ export const CardStack = defineComponent({
             required: true
         },
         onConfirm: {
-            type: Function as PropType<(card: SocialCardProps) => void>
+            type: Function as PropType<(card: SocialCardProps, like: boolean) => void>
         }
     },
     setup({onConfirm}) {
-        function confirm(card: SocialCardProps) {
-            onConfirm && onConfirm(card)
+        function confirm(card: SocialCardProps, like: boolean) {
+            onConfirm && onConfirm(card, like)
         }
         return ({list}: {
             list: SocialCardProps[]
@@ -25,7 +25,7 @@ export const CardStack = defineComponent({
             console.log('render card stack')
             return <div class={classes['card-stack']}>
                 {
-                    list.map((card, i) => <Card key={card.id} card={card} index={i} onConfirm={() => confirm(card)}></Card>)
+                    list.map((card, i) => <Card key={card.id} card={card} index={i} onConfirm={(card, like) => confirm(card, like)}></Card>)
                 }
             </div>
         }
@@ -81,7 +81,7 @@ const Card = defineComponent({
             required: true
         },
         onConfirm: {
-            type: Function as PropType<(card: SocialCardProps) => void>
+            type: Function as PropType<(card: SocialCardProps, like: boolean) => void>
         }
     },
     setup({card, index, onConfirm}) {
@@ -95,11 +95,11 @@ const Card = defineComponent({
         })
         watch(state, () => {
             if(state.value === 'release') {
-                if(Math.abs(trans.value[0]) > 30) {
-                    console.log('confirm', trans.value[0])
-                    onConfirm && onConfirm(card)
+                if(trans.value[0] > 30) {
+                    onConfirm && onConfirm(card, true)
+                } else if(trans.value[0] < -30) {
+                    onConfirm && onConfirm(card, false)
                 } else {
-                    console.log('cancel',  trans.value[0])
                     reset()
                 }
             } else {

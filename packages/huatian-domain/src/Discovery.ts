@@ -1,7 +1,13 @@
+import { Random } from "mockjs";
+import { Repository } from "./Repository";
 import { User } from "./User";
 
 export class DiscoveryRepo {
     private list: DiscoveryItem[] = []
+
+    constructor() {
+        this.generateDiscoveryItem()
+    }
 
     public getAll() {
         return this.list
@@ -9,6 +15,20 @@ export class DiscoveryRepo {
 
     public add(item: DiscoveryItem) {
         this.list.push(item)
+    }
+
+    generateDiscoveryItem() {
+        const users = [...Repository.userRepo().getAll()];
+        [...Array(10)].forEach((_, i) => {
+            this.add(
+                new DiscoveryItem(
+                    Random.ctitle(), 
+                    Random.csentence(), 
+                    Random.image('100x100'), 
+                    users[Math.floor(Math.random()*users.length)]
+                )
+            )
+        })
     }
 }
 
