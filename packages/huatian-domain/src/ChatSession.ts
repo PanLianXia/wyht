@@ -8,7 +8,8 @@ export type ChatRecord = {
 }
 export enum ChatSessionTopics {
     ChatListChanged,
-    ChatMsgToSend
+    ChatMsgToSend,
+    ChatMsgReceived
 }
 export class ChatSession extends Emiter<ChatSessionTopics> {
     static Topics = ChatSessionTopics
@@ -59,6 +60,7 @@ export class ChatSession extends Emiter<ChatSessionTopics> {
             type: 'receive',
             message: msg
         })
+        this.emit(ChatSessionTopics.ChatMsgReceived, msg)
         this.emit(ChatSessionTopics.ChatListChanged)
     }
 

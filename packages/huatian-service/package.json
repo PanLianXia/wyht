@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch src/**/*.ts src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "socket": "node socket_io/sock.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "nodejs-websocket": "^1.7.2",
     "typescript": "^4.8.4"
   },
   "devDependencies": {

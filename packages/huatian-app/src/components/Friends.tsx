@@ -10,7 +10,7 @@ export const Friends = defineComponent({
     setup() {
         const list = ref<ChatSession[]>([])
 
-        const chatContext = new ChatContext()
+        const chatContext = ChatContext.getRepo()
         chatContext.createSessions().then(sessions => {
             list.value = sessions
         })

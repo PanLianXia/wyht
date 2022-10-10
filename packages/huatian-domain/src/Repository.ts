@@ -31,7 +31,6 @@ export class Repository {
     }
 
     public static chatSessionRepo () {
-        debugger
         if(!Repository._chatSessionRepo) {
             Repository._chatSessionRepo = new ChatSessionRepo()
         }
